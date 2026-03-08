@@ -185,12 +185,6 @@ const HomePage: React.FC = () => {
     { quote: "Finally, software that understands landscaping. The material calculator has saved us thousands in over-ordering and waste.", author: 'David Thompson', role: 'Founder', company: 'Elite Groundworks', rating: 5 },
   ];
 
-  const pricing = [
-    { name: 'Starter', price: '£49', period: '/month', description: 'Perfect for small landscaping teams just getting started.', features: ['Up to 5 team members', '10 active projects', 'Basic quoting', 'Material calculator', 'Email support'], cta: 'Start Free Trial', popular: false },
-    { name: 'Professional', price: '£99', period: '/month', description: 'For growing businesses ready to scale operations.', features: ['Up to 20 team members', 'Unlimited projects', 'Advanced analytics', 'Invoice management', 'Priority support', 'API access'], cta: 'Start Free Trial', popular: true },
-    { name: 'Enterprise', price: 'Custom', period: '', description: 'For large organizations with complex requirements.', features: ['Unlimited team members', 'Custom integrations', 'Dedicated success manager', 'On-site training', 'SLA guarantee', 'White-label options'], cta: 'Contact Sales', popular: false },
-  ];
-
   const LeafLogo = ({ className = "w-6 h-6" }: { className?: string }) => (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L12 22l8.7-5c.8-1.5 1.3-3.2 1.3-5 0-5.5-4.5-10-10-10z" />
@@ -212,7 +206,7 @@ const HomePage: React.FC = () => {
             </Link>
 
             <div className="hidden lg:flex items-center gap-8">
-              {['Features', 'How It Works', 'Pricing', 'Testimonials'].map((item) => (
+              {['Features', 'How It Works', 'Testimonials'].map((item) => (
                 <a key={item} href={`#${item.toLowerCase().replace(' ', '-')}`} className={`font-medium transition-all duration-300 hover:scale-105 ${scrolled ? 'text-gray-600 hover:text-sage-600' : 'text-white/90 hover:text-white'}`}>
                   {item}
                 </a>
@@ -224,7 +218,7 @@ const HomePage: React.FC = () => {
                 Sign In
               </Link>
               <Link to="/register" className="bg-gradient-to-r from-sage-600 to-sage-700 text-white px-6 py-2.5 rounded-xl font-semibold hover:from-sage-700 hover:to-sage-800 transition-all duration-300 shadow-lg shadow-sage-600/30 hover:shadow-sage-600/50 hover:scale-105">
-                Start Free Trial
+                Get Started
               </Link>
             </div>
 
@@ -247,11 +241,10 @@ const HomePage: React.FC = () => {
           <div className="bg-white border-t border-sage-100 px-4 py-6 space-y-4 shadow-xl">
             <a href="#features" className="block text-gray-700 hover:text-sage-600 font-medium py-2">Features</a>
             <a href="#how-it-works" className="block text-gray-700 hover:text-sage-600 font-medium py-2">How It Works</a>
-            <a href="#pricing" className="block text-gray-700 hover:text-sage-600 font-medium py-2">Pricing</a>
             <a href="#testimonials" className="block text-gray-700 hover:text-sage-600 font-medium py-2">Testimonials</a>
             <div className="pt-4 border-t border-sage-100 space-y-3">
               <Link to="/login" className="block text-center text-sage-700 font-semibold py-2">Sign In</Link>
-              <Link to="/register" className="block text-center bg-gradient-to-r from-sage-600 to-sage-700 text-white py-3 rounded-xl font-semibold">Start Free Trial</Link>
+              <Link to="/register" className="block text-center bg-gradient-to-r from-sage-600 to-sage-700 text-white py-3 rounded-xl font-semibold">Get Started</Link>
             </div>
           </div>
         </div>
@@ -496,62 +489,6 @@ const HomePage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="py-24 bg-gradient-to-br from-sage-50 to-sage-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-white text-sage-700 px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-sm">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              Transparent Pricing
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Simple Plans for
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sage-600 to-sage-700"> Every Business</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Start free, upgrade when ready. No hidden fees, no long-term contracts.
-            </p>
-          </AnimatedSection>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {pricing.map((plan, index) => (
-              <AnimatedSection key={index} delay={index * 150}>
-                <div className={`relative rounded-2xl p-8 h-full transition-all duration-500 hover:-translate-y-2 ${plan.popular ? 'bg-gradient-to-br from-sage-600 to-sage-700 text-white shadow-2xl shadow-sage-600/30 scale-105 z-10' : 'bg-white border border-gray-100 shadow-lg shadow-sage-900/5 hover:shadow-xl'}`}>
-                  {plan.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-yellow-900 text-sm font-bold px-4 py-1.5 rounded-full shadow-lg">
-                      Most Popular
-                    </div>
-                  )}
-                  <div className="mb-6">
-                    <h3 className={`text-xl font-bold mb-2 ${plan.popular ? 'text-white' : 'text-gray-900'}`}>{plan.name}</h3>
-                    <p className={`text-sm ${plan.popular ? 'text-sage-100' : 'text-gray-600'}`}>{plan.description}</p>
-                  </div>
-                  <div className="mb-6">
-                    <span className={`text-5xl font-bold ${plan.popular ? 'text-white' : 'text-gray-900'}`}>{plan.price}</span>
-                    <span className={plan.popular ? 'text-sage-200' : 'text-gray-500'}>{plan.period}</span>
-                  </div>
-                  <ul className="space-y-4 mb-8">
-                    {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <svg className={`w-5 h-5 mt-0.5 flex-shrink-0 ${plan.popular ? 'text-sage-200' : 'text-sage-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className={plan.popular ? 'text-sage-100' : 'text-gray-700'}>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <button className={`w-full py-3.5 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${plan.popular ? 'bg-white text-sage-700 hover:bg-sage-50 shadow-lg' : 'bg-gradient-to-r from-sage-600 to-sage-700 text-white hover:from-sage-700 hover:to-sage-800 shadow-lg shadow-sage-500/25'}`}>
-                    {plan.cta}
-                  </button>
                 </div>
               </AnimatedSection>
             ))}
